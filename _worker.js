@@ -835,7 +835,8 @@ async function editCategory(oldCategoryName) {
         const icon = document.createElement('img');
         icon.className = 'card-icon';
         // icon.src = 'https://api.iowen.cn/favicon/' + extractDomain(link.url) + '.png';
-        icon.src = 'https://www.faviconextractor.com/favicon/' + extractDomain(link.url);
+        //icon.src = 'https://www.faviconextractor.com/favicon/' + extractDomain(link.url);
+        icon.src = 'https://getfavicon.377020945.xyz/?url=' + extractDomain(link.url);
         icon.alt = 'Website Icon';
         // 如果图片加载失败，使用默认的 SVG 图标
         icon.onerror = function() {

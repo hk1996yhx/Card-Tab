@@ -1,9 +1,10 @@
 // 随机颜色生成函数
 function generateRandomRGBA() {
-    var red = Math.floor(Math.random() * 256);
-    var green = Math.floor(Math.random() * 256);
-    var blue = Math.floor(Math.random() * 256);
-    return 'rgba(' + red + ',' + green + ',' + blue + ',0.7)';
+    // 对每个颜色通道分别生成随机数
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    return `rgba(${red},${green},${blue},0.7)`;
 }
 //随机背景图片选择函数
 function generateRandomBackgroundImage() {
@@ -39,7 +40,6 @@ function generateRandomBackgroundImage() {
     return backgrounds[Math.floor(Math.random() * backgrounds.length)];
 }
 // 动态设置背景
-const shouldUseColor = Math.random() < 0.5;
 const bodybackground = generateRandomBackgroundImage();
 const headbackground = generateRandomBackgroundImage();
 const colorbackground = generateRandomRGBA();
@@ -59,13 +59,13 @@ const HTML_CONTENT = `
             margin: 0;
             padding: 0;
             background-color: #e8f4ea;
-            background: ${bodybackground};
+            /* background: ${bodybackground};*/
             transition: background-color 0.3s ease;
         }
         #hitokoto {
             color: white;
             padding: 10px;
-            background: ${colorbackground};
+            /* background: ${colorbackground};*/
             /* 阻止文本自动换行 */
             white-space: nowrap;
         }
@@ -78,7 +78,7 @@ const HTML_CONTENT = `
             height: 105vh;
             /* 初始占满屏幕 */
             z-index: 1000;
-            background: ${headbackground};
+            /*background: ${headbackground};*/
             transition: height 0.6s ease-in-out,
                 opacity 0.4s ease;
             /* 添加平滑动画 */
@@ -502,6 +502,8 @@ const HTML_CONTENT = `
         </div>
     </div>
     <script>
+        document.body.style.background = shouldUseColor ? colorbackground : bodybackground;
+        document.querySelector('.fixed-elements').style.background = colorbackground;
         // 获取模块元素
         const fixedElement = document.querySelector('.fixed-elements');
         const content = document.querySelector('.content');

@@ -44,8 +44,11 @@ const bodyBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBac
 const headBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
 const colorBackground = generateRandomRGBA();
 // 设置背景
-document.body.style.background = bodyBackground;  // 设置 body 背景
-document.querySelector('.fixed-elements').style.background = headBackground;
+if (typeof document !== 'undefined') {
+    // Safe to use document here
+    document.body.style.background = bodyBackground;  // 设置 body 背景
+    document.querySelector('.fixed-elements').style.background = headBackground;
+}
 const HTML_CONTENT = `
 <!DOCTYPE html>
 <html lang="zh-CN">

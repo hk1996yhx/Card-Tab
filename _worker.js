@@ -40,8 +40,8 @@ function generateRandomBackgroundImage() {
 }
 // 动态设置背景
 const shouldUseColor = Math.random() < 0.5;
-const bodyBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
-const headBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
+const bodyBackground = generateRandomBackgroundImage();
+const headBackground = generateRandomBackgroundImage();
 const colorBackground = generateRandomRGBA();
 // 设置背景
 if (typeof document !== 'undefined') {

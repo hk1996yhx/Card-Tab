@@ -43,6 +43,9 @@ const shouldUseColor = Math.random() < 0.5;
 const bodybackground = generateRandomBackgroundImage();
 const headbackground = generateRandomBackgroundImage();
 const colorbackground = generateRandomRGBA();
+// 将背景和颜色动态应用到页面
+document.body.style.background = shouldUseColor ? colorbackground : bodybackground;
+document.querySelector('.fixed-elements').style.background = colorbackground;
 const HTML_CONTENT = `
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -59,11 +62,9 @@ const HTML_CONTENT = `
             margin: 0;
             padding: 0;
             background-color: #e8f4ea;
-            background: ${bodybackground};
             transition: background-color 0.3s ease;
         }
         #hitokoto {
-            background: ${colorbackground};
             color: white;
             padding: 10px;
             white-space: nowrap;
@@ -77,10 +78,9 @@ const HTML_CONTENT = `
             width: 100vw;
             height: 105vh;
             /* 初始占满屏幕 */
-            background: ${headbackground};
             z-index: 1000;
             transition: height 0.6s ease-in-out,
-            opacity 0.4s ease;
+                opacity 0.4s ease;
             /* 添加平滑动画 */
             opacity: 1;
             /* 初始完全不透明 */
@@ -247,7 +247,6 @@ const HTML_CONTENT = `
             margin-bottom: 10px;
         }
         .section-title {
-            background: ${headbackground};
             color: white;
             font-size: 18px;
             font-weight: bold;

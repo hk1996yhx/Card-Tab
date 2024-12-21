@@ -453,6 +453,8 @@ const HTML_CONTENT = `
             <p>本项目地址：<a href="https://github.com/hk1996yhx/cf-cardtab" target="_blank">GitHub</a> 如果喜欢，烦请点个star！</p>
         </div>
     </div>
+    document.body.style.background =bodybackground;
+    document.querySelector('.fixed-elements').style.background = headbackground;
     <script>
         // 随机颜色生成函数
         function generateRandomRGBA() {
@@ -502,8 +504,6 @@ const HTML_CONTENT = `
         // 获取模块元素
         const fixedElement = document.querySelector('.fixed-elements');
         const content = document.querySelector('.content');
-        document.body.style.background =bodybackground;
-        fixedElement.style.background = headbackground;
         // 监听滚动事件
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY; // 当前滚动的像素值

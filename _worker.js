@@ -43,9 +43,6 @@ const shouldUseColor = Math.random() < 0.5;
 const bodybackground = generateRandomBackgroundImage();
 const headbackground = generateRandomBackgroundImage();
 const colorbackground = generateRandomRGBA();
-// 将背景和颜色动态应用到页面
-document.body.style.background = shouldUseColor ? colorbackground : bodybackground;
-document.querySelector('.fixed-elements').style.background = colorbackground;
 const HTML_CONTENT = `
 <!DOCTYPE html>
 <html lang="zh-CN">

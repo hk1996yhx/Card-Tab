@@ -39,7 +39,7 @@ function generateRandomBackgroundImage() {
     return backgrounds[Math.floor(Math.random() * backgrounds.length)];
 }
 // 动态设置背景
-const shouldUseColor = Math.random() < -1;
+const shouldUseColor = Math.random() < 0.5;
 const bodyBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
 const headerBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
 const colorBackground = generateRandomRGBA();

@@ -72,7 +72,7 @@ const HTML_CONTENT = `
         top: 0;
         left: 0;
         width: 100vw;
-        height: 100vh; /* 初始占满屏幕 */
+        height: 110vh; /* 初始占满屏幕 */
         background: ${headbackground};
         z-index: 1000;
         transition: height 0.6s ease-in-out, opacity 0.4s ease; /* 添加平滑动画 */

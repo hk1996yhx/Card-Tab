@@ -41,8 +41,11 @@ function generateRandomBackgroundImage() {
 // 动态设置背景
 const shouldUseColor = Math.random() < 0.5;
 const bodyBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
-const headerBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
+const headBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
 const colorBackground = generateRandomRGBA();
+// 设置背景
+document.body.style.background = bodyBackground;  // 设置 body 背景
+document.querySelector('.fixed-elements').style.background = headBackground;
 const HTML_CONTENT = `
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -59,17 +62,17 @@ const HTML_CONTENT = `
             margin: 0;
             padding: 0;
             background-color: #e8f4ea;
-            background: $ {
-                bodyBackground
-            }
-            ;
+            // background: $ {
+            //     bodyBackground
+            // }
+            // ;
             transition: background-color 0.3s ease;
         }
         #hitokoto {
-            background: $ {
-                colorBackground
-            }
-            ;
+            // background: $ {
+            //     colorBackground
+            // }
+            // ;
             color: white;
             padding: 10px;
             white-space: nowrap;
@@ -83,10 +86,10 @@ const HTML_CONTENT = `
             width: 100vw;
             height: 105vh;
             /* 初始占满屏幕 */
-            background: $ {
-                headerBackground
-            }
-            ;
+            // background: $ {
+            //     headBackground
+            // }
+            // ;
             z-index: 1000;
             transition: height 0.6s ease-in-out,
             opacity 0.4s ease;
@@ -256,10 +259,10 @@ const HTML_CONTENT = `
             margin-bottom: 10px;
         }
         .section-title {
-            background: $ {
-                colorBackground
-            }
-            ;
+            // background: $ {
+            //     colorBackground
+            // }
+            // ;
             color: white;
             font-size: 18px;
             font-weight: bold;

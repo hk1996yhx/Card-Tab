@@ -40,7 +40,7 @@ function generateRandomBackgroundImage() {
 const shouldUseColor = Math.random() < 0.5;
 const bodyBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
 const headerBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
-const colorBackground = randomHexColor();
+const colorBackground = generateRandomRGBA();
 const HTML_CONTENT = `
 <!DOCTYPE html>
 <html lang="zh-CN">

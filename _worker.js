@@ -62,13 +62,15 @@ const HTML_CONTENT = `
             margin: 0;
             padding: 0;
             background-color: #e8f4ea;
+            background: ${bodybackground};
             transition: background-color 0.3s ease;
         }
         #hitokoto {
             color: white;
             padding: 10px;
-            white-space: nowrap;
+            background: ${colorbackground};
             /* 阻止文本自动换行 */
+            white-space: nowrap;
         }
         /* 初始状态 - 模块占满屏幕 */
         .fixed-elements {
@@ -79,6 +81,7 @@ const HTML_CONTENT = `
             height: 105vh;
             /* 初始占满屏幕 */
             z-index: 1000;
+            background: ${headbackground};
             transition: height 0.6s ease-in-out,
                 opacity 0.4s ease;
             /* 添加平滑动画 */

@@ -56,14 +56,22 @@ const HTML_CONTENT = `
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--body-background);
+            background-color: #e8f4ea;
+            background: $ {
+                bodyBackground
+            }
+            ;
             transition: background-color 0.3s ease;
         }
         #hitokoto {
-            background: var(--color-background);
+            background: $ {
+                colorBackground
+            }
+            ;
             color: white;
             padding: 10px;
             white-space: nowrap;
+            /* 阻止文本自动换行 */
         }
         /* 初始状态 - 模块占满屏幕 */
         .fixed-elements {
@@ -72,21 +80,40 @@ const HTML_CONTENT = `
             left: 0;
             width: 100vw;
             height: 105vh;
-            background: var(--header-background);
+            /* 初始占满屏幕 */
+            background: $ {
+                headerBackground
+            }
+            ;
             z-index: 1000;
-            transition: height 0.6s ease-in-out, opacity 0.4s ease;
+            transition: height 0.6s ease-in-out,
+            opacity 0.4s ease;
+            /* 添加平滑动画 */
             opacity: 1;
+            /* 初始完全不透明 */
         }
         /* 当模块收起时的状态 */
         .fixed-elements.hide {
-            height: 0;
+            height: 0vh;
+            /* 高度缩为 0 */
             opacity: 0;
+            /* 可选：渐隐 */
         }
         .fixed-elements h3 {
             position: absolute;
             top: 10px;
             left: 20px;
             margin: 0;
+        }
+        /* 中心内容样式 */
+        .center-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
         }
         /* 管理员控制面板样式 */
         .admin-controls {
@@ -107,7 +134,7 @@ const HTML_CONTENT = `
             gap: 10px;
         }
         .round-btn {
-            background-color: var(--button-hover-bg);
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 50%;
@@ -119,11 +146,24 @@ const HTML_CONTENT = `
             cursor: pointer;
             margin: 5px 0;
         }
+        .add-btn {
+            order: 1;
+        }
+        .remove-btn {
+            order: 2;
+        }
+        .category-btn {
+            order: 3;
+        }
+        .remove-category-btn {
+            order: 4;
+        }
         /* 主要内容区域样式 */
         .content {
             margin-top: 140px;
             padding: 20px;
         }
+        /* 搜索栏样式 */
         .search-container {
             margin-top: 10px;
         }
@@ -146,15 +186,118 @@ const HTML_CONTENT = `
             border-radius: 0 5px 5px 0;
             cursor: pointer;
         }
+        /* 搜索引擎按钮样式 */
+        .search-engines {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .search-engine {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* 主题切换按钮样式 */
+        #theme-toggle {
+            position: fixed;
+            bottom: 50px;
+            right: 20px;
+            background-color: #b8c9d9;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 24px;
+            line-height: 40px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        #theme-toggle:hover {
+            background-color: #007bff;
+        }
+        /* 对话框样式 */
+        #dialog-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        #dialog-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+        #dialog-box input,
+        #dialog-box select {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
         /* 分类和卡片样式 */
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .section-title {
+            background: $ {
+                colorBackground
+            }
+            ;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            white-space: nowrap;
+            /* 阻止文本自动换行 */
+        }
+        /* 删除按钮样式 */
+        .delete-category-btn {
+            background-color: #f44336;
+            /* 红色背景 */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-category-btn:hover {
+            background-color: #d32f2f;
+        }
+        /* 修改按钮样式 */
+        .edit-category-btn {
+            background-color: #ff9800;
+            /* 绿色背景 */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .edit-category-btn:hover {
+            background-color: #388e3c;
+        }
         .card-container {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             justify-content: flex-start;
+            /* 让卡片从左到右排列 */
         }
         .card {
-            background-color: var(--card-background);
             border-radius: 5px;
             padding: 10px;
             width: 150px;
@@ -163,10 +306,22 @@ const HTML_CONTENT = `
             position: relative;
             user-select: none;
             flex-basis: 150px;
+            /* 保持卡片宽度 */
             flex-grow: 0;
+            /* 防止卡片撑大 */
         }
         .card:hover {
             transform: translateY(-5px);
+        }
+        .card-top {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .card-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
         }
         .card-title {
             font-size: 14px;
@@ -174,6 +329,23 @@ const HTML_CONTENT = `
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+        .card-url {
+            font-size: 12px;
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .private-tag {
+            background-color: #ff9800;
+            color: white;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 3px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
         }
         .delete-btn {
             position: absolute;
@@ -191,6 +363,7 @@ const HTML_CONTENT = `
             cursor: pointer;
             display: none;
         }
+        /* 版权信息样式 */
         #copyright {
             position: fixed;
             bottom: 0;
@@ -205,8 +378,29 @@ const HTML_CONTENT = `
             z-index: 1000;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
+        #copyright p {
+            margin: 0;
+        }
+        #copyright a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        #copyright a:hover {
+            text-decoration: underline;
+        }
         /* 响应式设计 */
         @media (max-width: 480px) {
+            .fixed-elements {
+                position: relative;
+                padding: 5px;
+            }
+            .content {
+                margin-top: 10px;
+            }
+            .admin-controls input,
+            .admin-controls button {
+                height: 30%;
+            }
             .card-container {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
@@ -217,11 +411,32 @@ const HTML_CONTENT = `
                 max-width: 100%;
                 padding: 5px;
             }
+            .card-title {
+                font-size: 12px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 130px;
+            }
+            .card-url {
+                font-size: 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 130px;
+            }
+            .add-remove-controls {
+                right: 2px;
+            }
             .round-btn,
             #theme-toggle {
+                right: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 width: 30px;
                 height: 30px;
-                font-size: 20px;
+                font-size: 24px;
             }
         }
     </style>

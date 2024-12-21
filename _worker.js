@@ -4,7 +4,7 @@ function generateRandomRGBA() {
     const red = Math.floor(Math.random() * 256);
     const green = Math.floor(Math.random() * 256);
     const blue = Math.floor(Math.random() * 256);
-    return 'rgba(' + 红色 + ',' + 绿色 + ',' + 蓝色 + ',0.7)';
+    return 'rgba(' + red + ',' + green + ',' + blue + ',0.7)';
 }
 //随机背景图片选择函数
 function generateRandomBackgroundImage() {

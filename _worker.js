@@ -1,11 +1,10 @@
-function randomHexColor() { 
-    var red = Math.floor(Math.random() * 256);
-    var green = Math.floor(Math.random() * 256);
-    var blue = Math.floor(Math.random() * 256);
-    return 'rgba(' + red + ',' + green + ',' + blue + ',0.7)';
+// 随机颜色生成函数
+function generateRandomRGBA() {
+    const randomValue = () => Math.floor(Math.random() * 256);
+    return `rgba(${randomValue()}, ${randomValue()}, ${randomValue()}, 0.7)`;
 }
-// Function to generate a random background image URL
-function randomBackgroundImage() {
+//随机背景图片选择函数
+function generateRandomBackgroundImage() {
     // Array of sample image URLs
     const backgrounds = [
         'url(https://image.377020945.xyz/file/00b532f864fc091fbcfb5.jpg)',
@@ -34,14 +33,14 @@ function randomBackgroundImage() {
         'url(https://image.377020945.xyz/file/f7153f906745ef4cf3259.png)',
         // Add more image URLs as needed
     ];
-    // Choose a random image URL from the array
-    return backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    const randomIndex = Math.floor(Math.random() * backgrounds.length);
+    return `url(${backgrounds[randomIndex]})`;
 }
-// Randomly choose between color or image background
-const useColorBackground = Math.random() < -1; // 50% chance for each
-const headbackground = useColorBackground ? randomHexColor() : randomBackgroundImage();
-const bodybackground = useColorBackground ? randomHexColor() : randomBackgroundImage();
-const colorbackground = randomHexColor();
+// 动态设置背景
+const shouldUseColor = Math.random() < 0.5;
+const bodyBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
+const headerBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
+const colorBackground = randomHexColor();
 const HTML_CONTENT = `
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -57,11 +56,11 @@ const HTML_CONTENT = `
         margin: 0;
         padding: 0;
         background-color: #e8f4ea;
-        background: ${bodybackground};
+        background: ${bodyBackground};
         transition: background-color 0.3s ease;
     }
     #hitokoto {
-        background: ${colorbackground};
+        background: ${colorBackground};
         color: white;
         padding: 10px;
         white-space: nowrap; /* 阻止文本自动换行 */
@@ -73,7 +72,7 @@ const HTML_CONTENT = `
         left: 0;
         width: 100vw;
         height: 105vh; /* 初始占满屏幕 */
-        background: ${headbackground};
+        background: ${headerBackground};
         z-index: 1000;
         transition: height 0.6s ease-in-out, opacity 0.4s ease; /* 添加平滑动画 */
         opacity: 1; /* 初始完全不透明 */
@@ -229,7 +228,7 @@ const HTML_CONTENT = `
         margin-bottom: 10px;
     }
     .section-title {
-        background: ${colorbackground};
+        background: ${colorBackground};
         color: white;
         font-size: 18px;
         font-weight: bold;

@@ -52,26 +52,11 @@ const HTML_CONTENT = `
     <title>Card Tab</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>⭐</text></svg>">
+    /* 全局样式 */
     <style>
-        /* 全局样式 */
-        body {
-            background: ${bodybackground};
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #e8f4ea;
-            transition: background-color 0.3s ease;
-        }
-        #hitokoto {
-            background: ${colorbackground};
-            color: white;
-            padding: 10px;
-            /* 阻止文本自动换行 */
-            white-space: nowrap;
-        }
-        /* 初始状态 - 模块占满屏幕 */
-        .fixed-elements {
-            background: ${headbackground};
+    /* 初始状态 - 模块占满屏幕 */
+    .fixed-elements {
+        background: ${headbackground};
             position: absolute;
             top: 0;
             left: 0;
@@ -80,7 +65,7 @@ const HTML_CONTENT = `
             /* 初始占满屏幕 */
             z-index: 1000;
             transition: height 0.6s ease-in-out,
-                opacity 0.4s ease;
+            opacity 0.4s ease;
             /* 添加平滑动画 */
             opacity: 1;
             /* 初始完全不透明 */
@@ -97,6 +82,21 @@ const HTML_CONTENT = `
             top: 10px;
             left: 20px;
             margin: 0;
+        }
+        body {
+            background: ${bodybackground};
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e8f4ea;
+            transition: background-color 0.3s ease;
+        }
+        #hitokoto {
+            background: ${colorbackground};
+            color: white;
+            padding: 10px;
+            /* 阻止文本自动换行 */
+            white-space: nowrap;
         }
         /* 中心内容样式 */
         .center-content {

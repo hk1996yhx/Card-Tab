@@ -52,23 +52,23 @@ const HTML_CONTENT = `
     <title>Card Tab</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>⭐</text></svg>">
-    /* 全局样式 */
     <style>
-    /* 初始状态 - 模块占满屏幕 */
-    .fixed-elements {
-        background: ${headbackground};
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 105vh;
-            /* 初始占满屏幕 */
-            z-index: 1000;
-            transition: height 0.6s ease-in-out,
-            opacity 0.4s ease;
-            /* 添加平滑动画 */
-            opacity: 1;
-            /* 初始完全不透明 */
+    /* 全局样式 */
+        /* 初始状态 - 模块占满屏幕 */
+        .fixed-elements {
+            background: ${headbackground};
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 105vh;
+                /* 初始占满屏幕 */
+                z-index: 1000;
+                transition: height 0.6s ease-in-out,
+                opacity 0.4s ease;
+                /* 添加平滑动画 */
+                opacity: 1;
+                /* 初始完全不透明 */
         }
         /* 当模块收起时的状态 */
         .fixed-elements.hide {
@@ -507,7 +507,7 @@ const HTML_CONTENT = `
         // 监听滚动事件
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY; // 当前滚动的像素值
-            if (scrollPosition >= 50) { // 如果滚动超过 50 像素
+            if (scrollPosition >= 10) { // 如果滚动超过 50 像素
                 fixedElement.classList.add('hide'); // 添加类名，触发动画
                 content.classList.add('show'); // 显示主内容
             } else {
@@ -524,6 +524,7 @@ const HTML_CONTENT = `
             douyin: "https://www.douyin.com/search/",
             bilibili: "https://search.bilibili.com/all?keyword=",
         };
+        //默认搜索引擎
         let currentEngine = "baidu";
         // 日志记录函数
         function logAction(action, details) {

@@ -502,8 +502,8 @@ const HTML_CONTENT = `
         // 获取模块元素
         const fixedElement = document.querySelector('.fixed-elements');
         const content = document.querySelector('.content');
-        document.body.style.background = shouldUseColor ? colorbackground : bodybackground;
-        fixedElement.style.background = colorbackground;
+        document.body.style.background =bodybackground;
+        fixedElement.style.background = headbackground;
         // 监听滚动事件
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY; // 当前滚动的像素值

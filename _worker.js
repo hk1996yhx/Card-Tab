@@ -72,7 +72,7 @@ const HTML_CONTENT = `
         top: 0;
         left: 0;
         width: 100vw;
-        height: 110vh; /* 初始占满屏幕 */
+        height: 100vh; /* 初始占满屏幕 */
         background: ${headbackground};
         z-index: 1000;
         transition: height 0.6s ease-in-out, opacity 0.4s ease; /* 添加平滑动画 */
@@ -484,7 +484,7 @@ const content = document.querySelector('.content');
 // 监听滚动事件
 window.addEventListener('scroll', () => {
     const scrollPosition = window.scrollY; // 当前滚动的像素值
-    if (scrollPosition > 50) { // 如果滚动超过 50 像素
+    if (scrollPosition >=0) { // 如果滚动超过 50 像素
         fixedElement.classList.add('hide'); // 添加类名，触发动画
         content.classList.add('show'); // 显示主内容
     } else {

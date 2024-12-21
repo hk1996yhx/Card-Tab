@@ -1,7 +1,9 @@
 // 随机颜色生成函数
 function generateRandomRGBA() {
-    const randomValue = () => Math.floor(Math.random() * 256);
-    return `rgba(${randomValue()}, ${randomValue()}, ${randomValue()}, 0.7)`;
+    var red = Math.floor(Math.random() * 256);
+    var green = Math.floor(Math.random() * 256);
+    var blue = Math.floor(Math.random() * 256);
+    return 'rgba(' + red + ',' + green + ',' + blue + ',0.7)';
 }
 //随机背景图片选择函数
 function generateRandomBackgroundImage() {
@@ -33,11 +35,11 @@ function generateRandomBackgroundImage() {
         'url(https://image.377020945.xyz/file/f7153f906745ef4cf3259.png)',
         // Add more image URLs as needed
     ];
-    const randomIndex = Math.floor(Math.random() * backgrounds.length);
-    return `url(${backgrounds[randomIndex]})`;
+    // Choose a random image URL from the array
+    return backgrounds[Math.floor(Math.random() * backgrounds.length)];
 }
 // 动态设置背景
-const shouldUseColor = Math.random() < 0.5;
+const shouldUseColor = Math.random() < -1;
 const bodyBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
 const headerBackground = shouldUseColor ? generateRandomRGBA() : generateRandomBackgroundImage();
 const colorBackground = generateRandomRGBA();
